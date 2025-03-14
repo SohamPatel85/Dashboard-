@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Dashboard</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        red: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fecaca',
+                            300: '#fca5a5',
+                            400: '#f87171',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                            950: '#450a0a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Mobile Header -->
+    <div class="md:hidden bg-red-700 text-white p-4 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+            <button id="mobile-menu-button" class="mobile-menu-button">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            <h1 class="text-xl font-bold">RedDash</h1>
+        </div>
+        <div class="flex items-center space-x-4">
+            <button>
+                <i class="fas fa-bell"></i>
+            </button>
+            <div class="h-8 w-8 rounded-full bg-red-800 flex items-center justify-center">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex">
+        <!-- Sidebar Navigation - Hidden on mobile -->
+        <aside class="hidden md:flex md:flex-col md:w-64 bg-red-700 text-white h-screen fixed">
+            <div class="p-4 border-b border-red-600">
+                <h1 class="text-2xl font-bold">RedDash</h1>
+            </div>
+            
+            <nav class="flex-1 overflow-y-auto py-4">
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center px-4 py-3 text-white hover:bg-red-600 rounded-lg mx-2">
+                            <i class="fas fa-chart-bar mr-3"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center px-4 py-3 text-white hover:bg-red-600 rounded-lg mx-2">
+                            <i class="fas fa-users mr-3"></i>
+                            <span>Team</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center px-4 py-3 text-white hover:bg-red-600 rounded-lg mx-2">
+                            <i class="fas fa-user mr-3"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center px-4 py-3 text-white hover:bg-red-600 rounded-lg mx-2">
+                            <i class="fas fa-cog mr-3"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center px-4 py-3 text-white hover:bg-red-600 rounded-lg mx-2">
+                            <i class="fas fa-question-circle mr-3"></i>
+                            <span>About Us</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center px-4 py-3 text-white hover:bg-red-600 rounded-lg mx-2">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <span>Contact Us</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="p-4 border-t border-red-600">
+                <button class="flex items-center w-full px-4 py-2 text-white hover:bg-red-600 rounded-lg">
+                    <i class="fas fa-sign-out-alt mr-3"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Mobile Sidebar - Hidden by default -->
+        <div class="fixed inset-0 bg-gray-800 bg-opacity-75 z-40 hidden" id="mobile-menu">
+            <div class="relative w-64 h-full bg-red-700 text-white p-4">
+                <button class="absolute top-4 right-4" id="close-menu-button">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+                
+                <div class="mt-8">
+                    <h1 class="text-xl font-bold mb-6">RedDash</h1>
+                    <nav>
+                        <ul class="space-y-2">
+                            <li>
+                                <a href="#" class="flex items-center px-4 py-2 text-white hover:bg-red-600 rounded-lg">
+                                    <i class="fas fa-chart-bar mr-3"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center px-4 py-2 text-white hover:bg-red-600 rounded-lg">
+                                    <i class="fas fa-users mr-3"></i>
+                                    <span>Team</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center px-4 py-2 text-white hover:bg-red-600 rounded-lg">
+                                    <i class="fas fa-user mr-3"></i>
+                                    <span>Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center px-4 py-2 text-white hover:bg-red-600 rounded-lg">
+                                    <i class="fas fa-cog mr-3"></i>
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center px-4 py-2 text-white hover:bg-red-600 rounded-lg">
+                                    <i class="fas fa-question-circle mr-3"></i>
+                                    <span>About Us</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center px-4 py-2 text-white hover:bg-red-600 rounded-lg">
+                                    <i class="fas fa-envelope mr-3"></i>
+                                    <span>Contact Us</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <div class="absolute bottom-4 left-0 right-0 px-4">
+                    <button class="flex items-center w-full px-4 py-2 text-white hover:bg-red-600 rounded-lg">
+                        <i class="fas fa-sign-out-alt mr-3"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="flex-1 md:ml-64 p-4 md:p-8">
+            <!-- Desktop Header -->
+            <div class="hidden md:flex justify-between items-center mb-8">
+                <h1 class="text-2xl font-bold text-gray-800">Dashboard Overview</h1>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                        />
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                    <button class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                        <i class="fas fa-bell text-gray-600"></i>
+                    </button>
+                    <div class="flex items-center space-x-2">
+                        <div class="h-10 w-10 rounded-full bg-red-600 flex items-center justify-center text-white">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span class="font-medium">John Doe</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-gray-500 text-sm font-medium">Total Revenue</h3>
+                        <span class="p-2 bg-red-100 rounded-full text-red-600">
+                            <i class="fas fa-chart-bar"></i>
+                        </span>
+                    </div>
+                    <p class="text-2xl font-bold text-gray-800">$24,780</p>
+                    <p class="text-sm text-green-500 mt-2">+2.5% from last month</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-gray-500 text-sm font-medium">New Users</h3>
+                        <span class="p-2 bg-blue-100 rounded-full text-blue-600">
+                            <i class="fas fa-users"></i>
+                        </span>
+                    </div>
+                    <p class="text-2xl font-bold text-gray-800">573</p>
+                    <p class="text-sm text-green-500 mt-2">+12% from last week</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-gray-500 text-sm font-medium">Active Projects</h3>
+                        <span class="p-2 bg-yellow-100 rounded-full text-yellow-600">
+                            <i class="fas fa-cog"></i>
+                        </span>
+                    </div>
+                    <p class="text-2xl font-bold text-gray-800">12</p>
+                    <p class="text-sm text-red-500 mt-2">-1 from last month</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-gray-500 text-sm font-medium">Task Completion</h3>
+                        <span class="p-2 bg-green-100 rounded-full text-green-600">
+                            <i class="fas fa-tasks"></i>
+                        </span>
+                    </div>
+                    <p class="text-2xl font-bold text-gray-800">86%</p>
+                    <p class="text-sm text-green-500 mt-2">+4% from last week</p>
+                </div>
+            </div>
+
+            <!-- Main Content Sections -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Recent Activity -->
+                <div class="lg:col-span-2 bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <h2 class="text-lg font-bold text-gray-800 mb-4">Recent Activity</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start pb-4 border-b border-gray-100">
+                            <div class="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 mr-4">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-800">New project proposal submitted</p>
+                                <p class="text-sm text-gray-500">Jane Smith • 2 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start pb-4 border-b border-gray-100">
+                            <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-800">Quarterly report generated</p>
+                                <p class="text-sm text-gray-500">System • 4 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start pb-4 border-b border-gray-100">
+                            <div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-4">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-800">Project "Website Redesign" completed</p>
+                                <p class="text-sm text-gray-500">Robert Johnson • 1 day ago</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start pb-4 border-b border-gray-100">
+                            <div class="h-10 w-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 mr-4">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-800">Server maintenance scheduled</p>
+                                <p class="text-sm text-gray-500">System Admin • 1 day ago</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="mt-4 text-red-600 font-medium text-sm hover:text-red-700">
+                        View All Activity
+                    </button>
+                </div>
+
+                <!-- Team Members -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <h2 class="text-lg font-bold text-gray-800 mb-4">Team Members</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between pb-3 border-b border-gray-100">
+                            <div class="flex items-center">
+                                <div class="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-gray-500"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">John Doe</p>
+                                    <p class="text-sm text-gray-500">Project Manager</p>
+                                </div>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between pb-3 border-b border-gray-100">
+                            <div class="flex items-center">
+                                <div class="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-gray-500"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Jane Smith</p>
+                                    <p class="text-sm text-gray-500">UI Designer</p>
+                                </div>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between pb-3 border-b border-gray-100">
+                            <div class="flex items-center">
+                                <div class="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-gray-500"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Robert Johnson</p>
+                                    <p class="text-sm text-gray-500">Developer</p>
+                                </div>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between pb-3 border-b border-gray-100">
+                            <div class="flex items-center">
+                                <div class="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-gray-500"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Emily Davis</p>
+                                    <p class="text-sm text-gray-500">Marketing</p>
+                                </div>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="mt-4 text-red-600 font-medium text-sm hover:text-red-700">
+                        View All Members
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript for mobile menu toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeMenuButton = document.getElementById('close-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && closeMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.remove('hidden');
+                });
+
+                closeMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
